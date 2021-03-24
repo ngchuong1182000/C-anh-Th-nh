@@ -29,9 +29,10 @@ namespace PrimeNumber
         }
         private static async Task TaskOne()
         {
-            await Task.Delay(1000);
+            // await Task.Delay(1000);
             for (int i = 1; i <= 100; i++)
             {
+                await Task.Delay(1000);
                 if (checkPrime(i))
                 {
                     Console.WriteLine("Prime Number is : " + i);

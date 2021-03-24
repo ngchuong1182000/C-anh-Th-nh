@@ -14,6 +14,7 @@ namespace Delegate
             clockSubscriber.Subscribe(clockPublisher);
 
             clockPublisher.Run();
+            // Clock c = new Clock();
             // c.TimeChanged += (time) =>
             // {
             //     Console.WriteLine(" current time  up-to-dated : " + time);
@@ -22,7 +23,6 @@ namespace Delegate
 
             // while (true)
             // {
-
             //     time = new CurrentTime(getCurrentTime);
             //     c.Time = time();
             // }

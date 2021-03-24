@@ -1,0 +1,44 @@
+
+@using  LessonMvc.Models;
+@model IEnumerable<Person>;
+
+@{
+    ViewBag.Title = "User Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h1>@ViewBag.Name</h1>
+    <h1>
+        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Create">Create</a>
+    </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">gender</th>
+                <th scope="col">phone Number</th>
+                <th scope="col">birth Place</th>
+                <th scope="col">is Graduated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.firstName</td>
+                    <td>@item.lastName</td>
+                    <td>@item.gender</td>
+                    <td>@item.dateOfBirth</td>
+                    <td>@item.phoneNumber</td>
+                    <td>@item.birthPlace</td>
+                    <td>@item.isGraduated</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
