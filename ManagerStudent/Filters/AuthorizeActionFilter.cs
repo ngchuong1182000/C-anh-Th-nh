@@ -36,7 +36,9 @@ namespace ManagerStudent.Fillter
             }
             else if (isAdmin != getStudent.isAdmin)
             {
-                context.Result = new NotFoundResult();
+                context.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary { { "controller", "Home" }, { "action", "Index" } }
+                    );
             }
         }
     }

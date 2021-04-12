@@ -8,28 +8,28 @@ using Microsoft.Extensions.Logging;
 using ManagerStudent.Models;
 using Microsoft.AspNetCore.Http;
 using ManagerStudent.Fillter;
+using ManagerStudent.Models.IRepository;
 
 namespace ManagerStudent.Controllers
 {
     public class HomeController : Controller
     {
-        public static List<Student> list = new List<Student>(){
-            new Student("1", "chunguyenchuong2014bg@gmail.com", "123", true),
-            new Student("2", "chuongcnbhaf180208@gmail.com", "123", false)
-        };
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
+        private readonly IStudentRepository _tbStudent;
+        public HomeController(IStudentRepository tbStudent){
+            _tbStudent = tbStudent;
         }
-        [Author(true)]
+        // private readonly ILogger<HomeController> _logger;
+
+        // public HomeController(ILogger<HomeController> logger)
+        // {
+        //     _logger = logger;
+        // }
         public IActionResult Index()
         {
             Student s;
             string ss1 = HttpContext.Session.GetString("ss1");
 
-            foreach (var item in list)
+            foreach (var item in _tbStudent.GetAllStudent())
             {
                 if (item.UserName == ss1)
                 {
@@ -51,7 +51,7 @@ namespace ManagerStudent.Controllers
         [Author(true)]
         public IActionResult See()
         {
-            return View(list);
+            return View(_tbStudent.GetAllStudent());
         }
 
         public IActionResult Privacy()
@@ -65,14 +65,15 @@ namespace ManagerStudent.Controllers
             Random rd = new Random();
             string Id = rd.Next(1, 10000).ToString();
             Student student = new Student(Id, UserName, password, isAdmin);
-            list.Add(student);
+            Console.WriteLine(student);
+            _tbStudent.CreateStudent(student);
             return Redirect("/Home/See");
         }
 
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            foreach (var item in list)
+            foreach (var item in _tbStudent.GetAllStudent())
             {
                 if (item.UserName == email && item.Password == password)
                 {
