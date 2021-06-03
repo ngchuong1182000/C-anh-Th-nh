@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public interface IAuthorRepository : IGenericRepository<Author>
+    public interface IOrderService : IGenericService<Order>
     {
+        IEnumerable<Order> GetAllOrderByUser(string id, params Expression<Func<Order, object>>[] include);
     }
 }

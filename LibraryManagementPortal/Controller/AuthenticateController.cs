@@ -17,10 +17,10 @@ namespace LibraryManagementPortal.Controller
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
-        private readonly IUserRepository _repoUser;
-        private readonly IRoleRepository _repoRole;
+        private readonly IUserService _repoUser;
+        private readonly IRoleService _repoRole;
         private readonly IConfiguration _configuration;
-        public AuthenticateController(IUserRepository repoUser, IRoleRepository repoRole, IConfiguration configuration)
+        public AuthenticateController(IUserService repoUser, IRoleService repoRole, IConfiguration configuration)
         {
             _repoUser = repoUser;
             _repoRole = repoRole;
@@ -53,7 +53,7 @@ namespace LibraryManagementPortal.Controller
                 var token = new JwtSecurityToken(
                     issuer: _configuration["JWT:ValidIssuer"],
                     audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(1),
+                    expires: DateTime.Now.AddDays(1),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );

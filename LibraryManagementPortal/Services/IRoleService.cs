@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public interface IRoleRepository : IGenericRepository<Role>
+    public interface IRoleService : IGenericService<Role>
     {
     }
 }

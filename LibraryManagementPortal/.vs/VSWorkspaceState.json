@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models"
+    "\\Controller",
+    "\\Fillter",
+    "\\IRepositories",
+    "\\Repositories",
+    "\\Services"
   ],
-  "SelectedNode": "\\LibraryManagementPortal.sln",
+  "SelectedNode": "\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

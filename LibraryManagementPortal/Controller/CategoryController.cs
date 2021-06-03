@@ -17,9 +17,9 @@ namespace LibraryManagementPortal.Controller
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryRepository _repo;
+        private readonly ICategoryService _repo;
 
-        public CategoryController(ICategoryRepository repo)
+        public CategoryController(ICategoryService repo)
         {
             _repo = repo;
         }

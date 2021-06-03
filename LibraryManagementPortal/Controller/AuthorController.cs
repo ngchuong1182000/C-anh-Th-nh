@@ -1,13 +1,11 @@
 ﻿using LibraryManagementPortal.IRepositories;
 using LibraryManagementPortal.Models;
-using LibraryManagementPortal.Repositories;
 using LibraryManagementPortal.Utility;
 using ManagerStudent.Fillter;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,9 +15,9 @@ namespace LibraryManagementPortal.Controller
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly IAuthorRepository _repo;
+    private readonly IAuthorService _repo;
 
-        public AuthorController(IAuthorRepository repo)
+    public AuthorController(IAuthorService repo)
         {
             _repo = repo;
         }

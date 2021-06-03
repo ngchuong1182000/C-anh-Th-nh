@@ -5,11 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericService<T> where T : BaseEntity
     {
         protected readonly LibraryManagementPortalContext Context;
         protected readonly DbSet<T> Entities;
@@ -18,19 +17,16 @@ namespace LibraryManagementPortal.IRepositories
             this.Context = context;
             Entities = context.Set<T>();
         }
-
         public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] include)
         {
             var query = Entities.AsQueryable();
             return include.Aggregate(query, (current, include) => current.Include(include));
         }
-
         public IEnumerable<T> GetOne(string id, params Expression<Func<T, object>>[] include)
         {
             var query = Entities.AsQueryable();
             return include.Aggregate(query, (current, include) => current.Include(include)).Where(s => s.Id == id);
         }
-
         public void Insert(T e)
         {
             if (e == null)

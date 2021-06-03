@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.Repositories
 {
-    public class OrderRepository : GenericRepository<Order>, IOrderRepository
+    public class OrderRepository : GenericRepository<Order>, IOrderService
     {
         public OrderRepository(LibraryManagementPortalContext context) : base(context)
         {

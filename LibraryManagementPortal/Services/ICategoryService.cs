@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public interface IBookRepository : IGenericRepository<Book>
+    public interface ICategoryService : IGenericService<Category>
     {
-        IEnumerable<Book> GetAlInclude();
-
-        IEnumerable<Book> GetAllByAuthorId(string authorId);
     }
 }

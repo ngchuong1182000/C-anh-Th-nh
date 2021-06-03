@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.Repositories
 {
-    public class RoleRepository : GenericRepository<Role>, IRoleRepository
+    public class RoleRepository : GenericRepository<Role>, IRoleService
     {
         public RoleRepository(LibraryManagementPortalContext context) : base (context)
         {

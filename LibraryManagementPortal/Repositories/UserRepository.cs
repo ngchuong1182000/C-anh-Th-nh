@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.Repositories
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserRepository : GenericRepository<User>, IUserService
     {
         public UserRepository(LibraryManagementPortalContext context) : base (context)
         {

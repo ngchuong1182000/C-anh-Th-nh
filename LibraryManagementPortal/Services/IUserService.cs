@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public interface IUserRepository : IGenericRepository<User>
-    {
-        User GetUserByEmail(string email);
-        IEnumerable<User> GetOneOther(string id, params Expression<Func<User, object>>[] include);
-    }
+  public interface IUserService : IGenericService<User>
+  {
+    User GetUserByEmail(string email);
+    IEnumerable<User> GetOneOther(string id, params Expression<Func<User, object>>[] include);
+  }
 }

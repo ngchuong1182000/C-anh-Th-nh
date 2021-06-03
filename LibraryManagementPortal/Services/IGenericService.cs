@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementPortal.IRepositories
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericService<T> where T : class
     {
         IEnumerable<T> GetAll(params Expression<Func<T, object>>[] include);
         IEnumerable<T> GetOne(string id, params Expression<Func<T, object>>[] include);

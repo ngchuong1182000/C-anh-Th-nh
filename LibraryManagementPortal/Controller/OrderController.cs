@@ -16,21 +16,18 @@ namespace LibraryManagementPortal.Controller
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly IOrderRepository _repo;
+        private readonly IOrderService _repo;
         /*        [Author("Admin")]*/
-
-        public OrderController(IOrderRepository repo)
+        public OrderController(IOrderService repo)
         {
             _repo = repo;
         }
         // GET: api/<OrderDetailController>
-        
         [HttpGet]
         [Author("Admin")]
         public IEnumerable<Order> GetOrderDetail()
         {
             var borrowRequests = _repo.GetAll(b => b.OrderDetail, b => b.User).AsEnumerable();
-            
             return borrowRequests;            
         }
 
@@ -45,7 +42,6 @@ namespace LibraryManagementPortal.Controller
         {
             return _repo.GetAllOrderByUser(id, b => b.User, b => b.OrderDetail).Where(b => b.UserId == id).AsEnumerable();
         }
-
         // POST api/<OrderDetailController>
         [HttpPost("{userId}")]
         public IActionResult Insert(Order order, string userId)
@@ -79,8 +75,10 @@ namespace LibraryManagementPortal.Controller
 
         // PUT api/<OrderDetailController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(string id, [FromBody] Order order)
         {
+            order.UpdateAt = DateTime.Now;
+            _repo.Update(order);
         }
 
         // DELETE api/<OrderDetailController>/5

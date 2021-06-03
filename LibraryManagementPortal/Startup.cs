@@ -90,7 +90,7 @@ namespace LibraryManagementPortal
 
             services.AddDbContext<LibraryManagementPortalContext>(options =>
                 options
-                    /* .UseLazyLoadingProxies()*/
+                     .UseLazyLoadingProxies()
                     .UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddCors(options =>
             {
@@ -100,12 +100,12 @@ namespace LibraryManagementPortal
                         builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
                     });
             });
-            services.AddScoped<IBookRepository, BookRepository>();
-            services.AddScoped<ICategoryRepository, CateRepository>();
-            services.AddScoped<IAuthorRepository, AuthorRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IBookService, BookRepository>();
+            services.AddScoped<ICategoryService, CateRepository>();
+            services.AddScoped<IAuthorService, AuthorRepository>();
+            services.AddScoped<IUserService, UserRepository>();
+            services.AddScoped<IOrderService, OrderRepository>();
+            services.AddScoped<IRoleService, RoleRepository>();
 
         }
 

@@ -17,9 +17,9 @@ namespace LibraryManagementPortal.Controller
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _repo;
+        private readonly IUserService _repo;
 
-        public UserController(IUserRepository repo)
+        public UserController(IUserService repo)
         {
             _repo = repo;
         }
